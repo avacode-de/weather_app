@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import axios from 'axios';
 
 function App() {
-  const [city, setCity] = useState("");
+  const [input_city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
 
-  const fetchWeather = async (city) => {
+  const fetchWeather = async (input_city) => {
+    console.log("123");
     try {
-      const response = await axios.post('http://localhost:3000/weather', { city });
+      const response = await axios.post('http://localhost:3000/weather', { city: "Лондон"});
       console.log(response.data);
     } catch (error) {
       console.error('Error fetching weather data', error);
@@ -19,7 +20,7 @@ function App() {
   <h1>Прогноз погоды</h1>
   <input
     type="text"
-    value={city}
+    value={input_city}
     onChange={(e) => setCity(e.target.value)}
     placeholder="Введите город" 
   />
